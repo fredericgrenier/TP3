@@ -165,3 +165,27 @@ void graphe::clear(){
 graphe::~graphe(){
     clear();
 }
+
+void graphe::localiser(uint32_t& point, float& distance){
+
+}
+
+graphe::vider(){
+
+}
+
+size_t graphe::size_map()const{
+
+}
+
+uint32_t graphe::localiser(float LAT, float LON){
+
+}
+
+string graphe::operator[](uint32_t){
+
+}
+
+float graphe::distance(uint32_t, float, float){
+
+}

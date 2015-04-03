@@ -35,8 +35,13 @@ private:
 	void lire(float&);
 	void lire(string&);
 	void lire_noeud(uint32_t);
-
 public:
+	vider();	// vide le map des noeuds
+	size_t size_map()const;	// nombre de noeuds dans le map
+	uint32_t localiser(float LAT, float LON);	// trouver un numero de noeud
+	string operator[](uint32_t);	// une chaine qui identifie un noeud
+	float distance(uint32_t,float,float);
+
 	graphe(string);
 	~graphe();
 	void clear();
