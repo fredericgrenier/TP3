@@ -10,7 +10,7 @@
 #include <map>
 #include <string>
 #include <list>
-
+#include <stdint.h>
 #ifndef FichiersBinaires_graphe_h
 #define FichiersBinaires_graphe_h
 using namespace std;
