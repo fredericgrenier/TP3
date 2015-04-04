@@ -200,13 +200,20 @@ uint32_t graphe::localiser(float LAT, float LON){
 		z1 = (z + 2) % 4;
 		z2 = 3 - z1;
 
-		if (lesNoeuds[point].QT[z] != 0)	// Si la zone n'est pas vide
-			localiser(LAT,LON, lesNoeuds[point].QT[z], point, point_final, Mdistance);	
-		else if ((lesNoeuds[point].QT[z1] != 0) && (distance(lesNoeuds[point].QT[z1],LAT,LON)<Mdistance)) // Si la zone adjacente n'est pas vide et que la distance est plus petite
+		if (lesNoeuds[point].QT[z] != 0){	// Si la zone n'est pas vide
+			localiser(LAT, LON, lesNoeuds[point].QT[z], point, point_final, Mdistance);
+		}
+		else if ((lesNoeuds[point].QT[z1] != 0) && (distance(lesNoeuds[point].QT[z1], LAT, LON) < Mdistance)){ // Si la zone adjacente n'est pas vide et que la distance est plus petite
 			localiser(LAT, LON, lesNoeuds[point].QT[z1], point, point_final, Mdistance);
-		else if ((lesNoeuds[point].QT[z2] != 0) && (distance(lesNoeuds[point].QT[z2],LAT,LON)<Mdistance)) // Si la zone adjacente n'est pas vide et que la distance est plus petite
+			cout << "z1" << endl;
+		}
+		else if ((lesNoeuds[point].QT[z2] != 0) && (distance(lesNoeuds[point].QT[z2], LAT, LON) < Mdistance)){ // Si la zone adjacente n'est pas vide et que la distance est plus petite
 			localiser(LAT, LON, lesNoeuds[point].QT[z2], point, point_final, Mdistance);
-		else continuer = false;
+			cout << "z2" << endl;
+		}
+		else {
+			break;
+		}
 	}
 	return point_final;
 }
