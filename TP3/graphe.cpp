@@ -51,6 +51,10 @@ void graphe::lire_noeud(uint32_t i) {
         lire(variable);
         lire(x.lattitude);
         lire(x.longitude);
+		lire(x.QT[0]);
+		lire(x.QT[1]);
+		lire(x.QT[2]);
+		lire(x.QT[3]);
         DATA.seekg(variable);
         uint16_t nbr;
         lire(nbr);
@@ -167,8 +171,44 @@ graphe::~graphe(){
     clear();
 }
 
-void graphe::localiser(uint32_t& point, float& distance){
+void graphe::localiser(float LAT, float LON, uint32_t recrue, uint32_t& point, uint32_t& point_final, float& Mdistance){
+	float d = distance(recrue, LAT, LON);
+	if (d < Mdistance){
+		Mdistance = d;
+		point_final = recrue;
+	}
+	point = recrue;
+}
 
+uint32_t graphe::localiser(float LAT, float LON){
+	uint32_t point = 0;
+	uint32_t point_final = point;
+	lire_noeud(point);
+	float Mdistance = std::numeric_limits<float>::max();
+	bool continuer = true;
+	size_t z,z1,z2;
+	float point_LAT = lesNoeuds[point].lattitude;
+	float point_LON = lesNoeuds[point].longitude;
+
+	while (continuer){
+		// Determiner dans quel zone est le point x(LAT,LON)
+		if ((LAT > point_LAT) && (LON > point_LON))z = 0;
+		else if ((LAT > point_LAT) && (LON <= point_LON))z = 1;
+		else if ((LAT <= point_LAT) && (LON > point_LON))z = 2;
+		else z = 3;
+		
+		z1 = (z + 2) % 4;
+		z2 = 3 - z1;
+
+		if (lesNoeuds[point].QT[z] != 0)	// Si la zone n'est pas vide
+			localiser(LAT,LON, lesNoeuds[point].QT[z], point, point_final, Mdistance);	
+		else if ((lesNoeuds[point].QT[z1] != 0) && (distance(lesNoeuds[point].QT[z1],LAT,LON)<Mdistance)) // Si la zone adjacente n'est pas vide et que la distance est plus petite
+			localiser(LAT, LON, lesNoeuds[point].QT[z1], point, point_final, Mdistance);
+		else if ((lesNoeuds[point].QT[z2] != 0) && (distance(lesNoeuds[point].QT[z2],LAT,LON)<Mdistance)) // Si la zone adjacente n'est pas vide et que la distance est plus petite
+			localiser(LAT, LON, lesNoeuds[point].QT[z2], point, point_final, Mdistance);
+		else continuer = false;
+	}
+	return point_final;
 }
 
 void graphe::vider(){
@@ -179,17 +219,13 @@ size_t graphe::size_map()const{
 	return lesNoeuds.size();
 }
 
-uint32_t graphe::localiser(float LAT, float LON){
-	return 0;
-}
-
 string graphe::operator[](uint32_t noeud){
 	return lesNoeuds[noeud].nom;
 }
 
 float graphe::distance(uint32_t noeud, float LAT, float LON){
 	lire_noeud(noeud);
-	float distance, x, y,c;
+	float Mdistance, x, y,c;
 	float pi = 3.141592653589793238462643;
 	float noeud_LAT = lesNoeuds[noeud].lattitude;
 	float noeud_LON = lesNoeuds[noeud].longitude;
@@ -197,7 +233,6 @@ float graphe::distance(uint32_t noeud, float LAT, float LON){
 	x = pow((LON - noeud_LON), 2);
 	y = pow((LAT - noeud_LAT), 2);
 	c = pow(cos((noeud_LAT + LAT) / 2 * pi / 180), 2);
-	distance = sqrt(y + x*c)*111;
-
-	return distance;
+	Mdistance = sqrt(y + x*c)*111;
+	return Mdistance;
 }
