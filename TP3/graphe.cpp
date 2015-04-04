@@ -11,6 +11,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <stdint.h>
 #include <unordered_map>
 using namespace std;
 
@@ -170,22 +171,22 @@ void graphe::localiser(uint32_t& point, float& distance){
 
 }
 
-graphe::vider(){
+void graphe::vider(){
 
 }
 
 size_t graphe::size_map()const{
-
+	return 0;
 }
 
 uint32_t graphe::localiser(float LAT, float LON){
-
+	return 0;
 }
 
 string graphe::operator[](uint32_t){
-
+	return 0;
 }
 
 float graphe::distance(uint32_t, float, float){
-
+	return 0;
 }
