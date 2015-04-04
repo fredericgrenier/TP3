@@ -172,21 +172,32 @@ void graphe::localiser(uint32_t& point, float& distance){
 }
 
 void graphe::vider(){
-
+	lesNoeuds.clear();
 }
 
 size_t graphe::size_map()const{
-	return 0;
+	return lesNoeuds.size();
 }
 
 uint32_t graphe::localiser(float LAT, float LON){
 	return 0;
 }
 
-string graphe::operator[](uint32_t){
-	return 0;
+string graphe::operator[](uint32_t noeud){
+	return lesNoeuds[noeud].nom;
 }
 
-float graphe::distance(uint32_t, float, float){
-	return 0;
+float graphe::distance(uint32_t noeud, float LAT, float LON){
+	lire_noeud(noeud);
+	float distance, x, y,c;
+	float pi = 3.141592653589793238462643;
+	float noeud_LAT = lesNoeuds[noeud].lattitude;
+	float noeud_LON = lesNoeuds[noeud].longitude;
+
+	x = pow((LON - noeud_LON), 2);
+	y = pow((LAT - noeud_LAT), 2);
+	c = pow(cos((noeud_LAT + LAT) / 2 * pi / 180), 2);
+	distance = sqrt(y + x*c)*111;
+
+	return distance;
 }
