@@ -7,7 +7,9 @@
 #include <stdint.h>
 #include "graphe.h"
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
 
 void Two_Way_Test(std::string path, uint32_t from, uint32_t to)
 {
@@ -29,18 +31,17 @@ void Two_Way_Test(std::string path, uint32_t from, uint32_t to)
 	std::cout << "Duration B: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - start).count() << '\n';
 }
 
-void findDistance(string filePath, unit32_t noeud, float latitude, float longitude)
+void findDistance(string filePath, uint32_t numreoNoeud, float latitude, float longitude)
 {
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::time_point end;
-	uint32_t noeud;
 	graphe G(filePath);
-	cout << "point : " << noeud << " distance : " << G.distance(noeud, latitude, longitude) << endl;
-	noeud = G.localiser(latitude, longitude);
+	cout << "point : " << numreoNoeud << " distance : " << G.distance(numreoNoeud, latitude, longitude) << endl;
+	numreoNoeud = G.localiser(latitude, longitude);
 	cout << "point : "
-		<< noeud
+		<< numreoNoeud
 		<< " distance : "
-		<< G.distance(noeud, latitude, longitude)
+		<< G.distance(numreoNoeud, latitude, longitude)
 		<< " noeuds lus : "
 		<< G.size_map()
 		<< endl;
@@ -57,36 +58,6 @@ void askNode()
 	std::cout << "Node to:" << std::endl;
 	std::cin >> nodeB;
 	Two_Way_Test(path, nodeA, nodeB);
-}
-
-void Test2()
-{
-	uint32_t noeud;
-	graphe G("grUSA_1024.ibin");
-	cout << "point : 841 distance : " << G.distance(841, 40, -70) << endl;
-	noeud = G.localiser(40, -70);
-	cout << "point : "
-		 << noeud
-		 << " distance : "
-		 << G.distance(noeud, 40, -70)
-		 << " noeuds lus : "
-		 << G.size_map()
-		 << endl;
-}
-
-void Test3()
-{
-	uint32_t noeud;
-	graphe G("C:\\Tests\\grUSA_1048576.ibin");
-	cout << "point : 841 distance : " << G.distance(841, 40, -70) << endl;
-	noeud = G.localiser(40, -70);
-	cout << "point : "
-		<< noeud
-		<< " distance : "
-		<< G.distance(noeud, 40, -70)
-		<< " noeuds lus : "
-		<< G.size_map()
-		<< endl;
 }
 
 int main()
