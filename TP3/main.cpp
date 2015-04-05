@@ -10,8 +10,8 @@ using namespace std;
 int main()
 {
 	uint32_t noeud;
-	graphe G("grUSA_32.ibin");
-	cout << "point : 31 distance : " << G.distance(31,40,-70) << endl;
+	graphe G("grUSA_1024.ibin");
+	cout << "point : 841 distance : " << G.distance(841,40,-70) << endl;
 	noeud = G.localiser(40, -70);
 	cout << "point : "
 		<< noeud
