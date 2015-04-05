@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 #include <list>
-#include <ctime>
+#include <chrono>
 #include "graphe.h"
 
 using namespace std;
@@ -12,18 +12,20 @@ void Two_Way_Test(std::string path, uint32_t from, uint32_t to)
 {
 	graphe graph(path);
 
-	std::clock_t start;
+	std::chrono::high_resolution_clock::time_point start;
+	std::chrono::high_resolution_clock::time_point end;
+	std::chrono::duration<double> dur;
 	double duration;
 
-	start = std::clock();
+	start = std::chrono::high_resolution_clock::now();
 	graph.afficher_chemin(graph.trouver_chemin(from, to));
-	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-	std::cout << "Duration A: " << duration << '\n';
+	end = std::chrono::high_resolution_clock::now();
+	std::cout << "Duration A: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - start).count() << '\n';
 
-	start = std::clock();
+	start = std::chrono::high_resolution_clock::now();
 	graph.afficher_chemin(graph.trouver_chemin(to, from));
-	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-	std::cout << "Duration B: " << duration << '\n';
+	end = std::chrono::high_resolution_clock::now();
+	std::cout << "Duration B: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - start).count() << '\n';
 }
 
 void askNode()
