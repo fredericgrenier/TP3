@@ -11,6 +11,7 @@
 #include <string>
 #include <list>
 #include <stdint.h>
+#include <vector>
 #ifndef FichiersBinaires_graphe_h
 #define FichiersBinaires_graphe_h
 
@@ -27,6 +28,7 @@ private:
 	std::string NOM;
 	uint32_t NBNOEUDS;
 	uint32_t DEBUT_PARTIE_FIXE;
+	std::vector<bool> noeudsLus;
 	std::map<uint32_t, noeud> lesNoeuds;
 	void lire(void* adresse, size_t octets);
 	void lire(uint16_t&);
