@@ -177,7 +177,7 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	float Ndistance = distance(point,LAT,LON);
 	if (Ndistance < Mdistance)
 	{
-		cout << "distance : " << Mdistance << endl;
+		//cout << "distance : " << Mdistance << endl;
 		Mdistance = Ndistance;
 		point_final = point;
 	}
@@ -195,6 +195,30 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	if (noeudCourant.QT[z] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z], Mdistance);
 	if (noeudCourant.QT[z1] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
 	if (noeudCourant.QT[z2] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
+	/*if (z == 0){
+		if ((LON - point_LON)<Mdistance)
+			if (lesNoeuds[point].QT[1] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[1], Mdistance);
+		if ((LAT - point_LAT)<Mdistance)
+			if (lesNoeuds[point].QT[2] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[2], Mdistance);
+	}
+	else if (z == 1){
+		if ((LAT - point_LAT)<Mdistance)
+			if (lesNoeuds[point].QT[3] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[3], Mdistance);
+		if ((point_LON - LON)<Mdistance)
+			if (lesNoeuds[point].QT[0] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[0], Mdistance);
+	}
+	else if (z == 2){
+		if ((point_LAT - LAT)<Mdistance)
+			if (lesNoeuds[point].QT[0] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[0], Mdistance);
+		if ((LON - point_LON)<Mdistance)
+			if (lesNoeuds[point].QT[3] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[3], Mdistance);
+	}
+	else if (z == 3){
+		if ((point_LON - LON)<Mdistance)
+			if (lesNoeuds[point].QT[2] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[2], Mdistance);
+		if ((point_LAT - LAT)<Mdistance)
+			if (lesNoeuds[point].QT[1] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[1], Mdistance);
+	}*/
 }
 
 uint32_t graphe::localiser(float LAT, float LON){

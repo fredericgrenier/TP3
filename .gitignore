@@ -1,3 +1,8 @@
 *.suo
 *.opensdf
 *.sdf
+*.tlog
+*.idb
+TP3/Debug/TP3.tlog/link.read.1.tlog
+*.tlog
+TP3/Debug/TP3.tlog/link.read.1.tlog
