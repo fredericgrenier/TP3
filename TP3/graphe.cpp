@@ -181,9 +181,9 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 		Mdistance = Ndistance;
 		point_final = point;
 	}
-	noeud noeudCourrant = lesNoeuds[point];
-	float point_LAT = noeudCourrant.lattitude;
-	float point_LON = noeudCourrant.longitude;
+	noeud noeudCourant = lesNoeuds[point];
+	float point_LAT = noeudCourant.lattitude;
+	float point_LON = noeudCourant.longitude;
 	// Determiner dans quel zone est le point x(LAT,LON)
 	if ((LAT > point_LAT) && (LON > point_LON))z = 0;
 	else if ((LAT > point_LAT) && (LON <= point_LON))z = 1;
@@ -192,9 +192,9 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	z1 = (z + 2) % 4;
 	z2 = 3 - z1;
 	int test = lesNoeuds[point].QT[z];
-	if (noeudCourrant.QT[z] != 0)localiser(LAT, LON, point_final, noeudCourrant.QT[z], Mdistance);
-	if (noeudCourrant.QT[z1] != 0)localiser(LAT, LON, point_final, noeudCourrant.QT[z1], Mdistance);
-	if (noeudCourrant.QT[z2] != 0)localiser(LAT, LON, point_final, noeudCourrant.QT[z2], Mdistance);
+	if (noeudCourant.QT[z] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z], Mdistance);
+	if (noeudCourant.QT[z1] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
+	if (noeudCourant.QT[z2] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
 }
 
 uint32_t graphe::localiser(float LAT, float LON){
