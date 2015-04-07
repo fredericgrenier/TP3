@@ -70,9 +70,9 @@ int main()
 	//Two_Way_Test("C:\\Tests\\grUSA_1048576.ibin", 320694, 910366);
 	//Two_Way_Test("C:\\Tests\\grUSA_32768.ibin", 3489, 6666);
 
-	//findDistance("grUSA_1024.ibin", 841, 40, -70);
+	findDistance("grUSA_1024.ibin", 841, 40, -70);
 	//findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40, -70);
-	findDistance("C:\\Tests\\grUSA_1048576.ibin", 841, 40, -70);
+	//findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40, -70);
 
 	return 0;
 }
