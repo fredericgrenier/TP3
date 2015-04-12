@@ -187,7 +187,7 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	noeud noeudCourant = lesNoeuds[point];
 	float point_LAT = noeudCourant.lattitude;
 	float point_LON = noeudCourant.longitude;
-	// Determiner dans quel zone est le point x, donc z
+	// Determiner dans quelle zone est le point x, donc z
 	if ((LAT > point_LAT) && (LON > point_LON))z = 0;
 	else if ((LAT > point_LAT) && (LON <= point_LON))z = 1;
 	else if ((LAT <= point_LAT) && (LON > point_LON))z = 2;
@@ -195,13 +195,13 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	// Determiner les zones adjacentes, z1 et z2
 	z1 = (z + 2) % 4;
 	z2 = 3 - z1;
-	// Avancer dans l'arbre vers le point x
+	// Explorer la zone contenant le point x
 	if (noeudCourant.QT[z] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z], Mdistance);
 	// Explorer les zones adjacentes si les frontieres sont assez proches
-	if ((std::abs(LAT - point_LAT)*111) < Mdistance)
-		if (lesNoeuds[point].QT[z1] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[z1], Mdistance);
-	if ((std::abs(LON - point_LON)*111) < Mdistance)
-		if (lesNoeuds[point].QT[z2] != 0)localiser(LAT, LON, point_final, lesNoeuds[point].QT[z2], Mdistance);
+	if (noeudCourant.QT[z1] != 0)
+		if ((std::abs(LAT - point_LAT) * 111) < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
+	if (noeudCourant.QT[z2] != 0)
+		if ((std::abs(LON - point_LON) * 111) < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
 }
 
 uint32_t graphe::localiser(float LAT, float LON)
