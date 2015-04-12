@@ -68,11 +68,11 @@ int main()
 	//Two_Way_Test("F:\\Travaux\\BAC Informatique\\Session1\\IFT339\\TP2\\Fichiers test\\grUSA_1024.ibin", 316, 554);
 	//Two_Way_Test("F:\\Travaux\\BAC Informatique\\Session1\\IFT339\\TP2\\Fichiers test\\grUSA_32768.ibin", 0, 32767);
 	//Two_Way_Test("C:\\Tests\\grUSA_32768.ibin", 3489, 6666);
-	Two_Way_Test("C:\\Tests\\grUSA_1048576.ibin", 320694, 910366);
+	//Two_Way_Test("C:\\Tests\\grUSA_1048576.ibin", 320694, 910366);
 
 	//findDistance("grUSA_1024.ibin", 841, 40, -70); //  (d=191.314) 25 noeuds lus
 	//findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40, -70); //  (d=191.314) 25 noeuds lus
-	//findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
+	findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
 
 	return 0;
 }
