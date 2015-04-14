@@ -178,7 +178,7 @@ graphe::~graphe(){
 
 void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& point, float& Mdistance){
 	size_t z, z1, z2;
-	float X2, C2;
+	float distanceFrontiere;
 	float Ndistance = distance(point, LAT, LON);
 	// Actualiser le point/distance si on a trouve mieux 
 	if (Ndistance < Mdistance)
@@ -200,12 +200,12 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	// Explorer la zone contenant le point x
 	if (noeudCourant.QT[z] != 0)localiser(LAT, LON, point_final, noeudCourant.QT[z], Mdistance);
 	// Explorer les zones adjacentes si les frontieres sont assez proches
+	distanceFrontiere = std::abs(LAT - point_LAT) * 111;
 	if (noeudCourant.QT[z1] != 0)
-		if ((std::abs(LAT - point_LAT) * 111) < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
-	X2 = pow((LON - point_LON), 2);
-	C2 = pow(std::cos(point_LAT * M_PI / 180), 2);
+		if (distanceFrontiere < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
+	distanceFrontiere = std::sqrt(pow((LON - point_LON), 2)*pow(std::cos(point_LAT * M_PI / 180), 2)) * 111;
 	if (noeudCourant.QT[z2] != 0)
-		if ((std::sqrt(X2*C2)*111 < Mdistance))localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
+		if (distanceFrontiere < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
 }
 
 uint32_t graphe::localiser(float LAT, float LON)
