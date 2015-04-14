@@ -203,7 +203,7 @@ void graphe::localiser(float LAT, float LON, uint32_t& point_final, uint32_t& po
 	if (noeudCourant.QT[z1] != 0)
 		if ((std::abs(LAT - point_LAT) * 111) < Mdistance)localiser(LAT, LON, point_final, noeudCourant.QT[z1], Mdistance);
 	X2 = pow((LON - point_LON), 2);
-	C2 = pow(std::cos((LAT + point_LAT) / 2 * M_PI / 180), 2);
+	C2 = pow(std::cos(point_LAT * M_PI / 180), 2);
 	if (noeudCourant.QT[z2] != 0)
 		if ((std::sqrt(X2*C2)*111 < Mdistance))localiser(LAT, LON, point_final, noeudCourant.QT[z2], Mdistance);
 }
