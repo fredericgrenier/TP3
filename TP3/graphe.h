@@ -3,7 +3,7 @@
 //
 //  Jean Goulet on 15-02-09.
 //  Copyleft 2015
-//  Maxime Boulay, Frédéric Grenier 15-03-16
+//  Felix Vallieres Goulet, Frédéric Grenier 13-04-15
 
 #include <iostream>
 #include <fstream>
