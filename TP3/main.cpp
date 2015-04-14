@@ -70,10 +70,10 @@ int main()
 	//Two_Way_Test("C:\\Tests\\grUSA_32768.ibin", 3489, 6666);
 	//Two_Way_Test("C:\\Tests\\grUSA_1048576.ibin", 320694, 910366);
 
-	//findDistance("C:\\Tests\\grUSA_32.ibin", 31, 40.0F, -70.0F); //  (d=234.21) 8 noeuds lus
-	//findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40.0F, -70.0F); //  (d=191.314) 25 noeuds lus
-	//findDistance("C:\\Tests\\grUSA_32768.ibin", 18499, 40.0F, -70.0F); //  (d=138.913) 29 noeuds lus
-	//findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
+	findDistance("C:\\Tests\\grUSA_32.ibin", 31, 40.0F, -70.0F); //  (d=234.21) 8 noeuds lus
+	findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40.0F, -70.0F); //  (d=191.314) 25 noeuds lus
+	findDistance("C:\\Tests\\grUSA_32768.ibin", 18499, 40.0F, -70.0F); //  (d=138.913) 29 noeuds lus
+	findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
 
 	// Test des petites fonctions
 	/*graphe G("C:\\Tests\\grUSA_1048576.ibin");
@@ -83,8 +83,8 @@ int main()
 	cout << "Nom du noeud 0 : " << G[0] << endl;
 	cout << "Nom du noeud 631097 : " << G[631097] << endl;
 	G.vider();
-	cout << "Size_map apres vider : " << G.size_map() << endl;
-	*/
+	cout << "Size_map apres vider : " << G.size_map() << endl;*/
+	
 	return 0;
 }
 
