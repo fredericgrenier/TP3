@@ -3,7 +3,8 @@
 //
 //  Jean Goulet on 15-02-09.
 //  Copyleft 2015
-//  Felix Vallieres Goulet, Frédéric Grenier 13-04-15
+//  Frédéric Grenier GREF
+//  Felix Vallieres Goulet VALF1701, 13-04-15
 
 #include <iostream>
 #include <fstream>
