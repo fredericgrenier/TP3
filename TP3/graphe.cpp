@@ -167,6 +167,7 @@ list<uint32_t> graphe::trouver_chemin(uint32_t DEP, uint32_t ARR) {
 
 void graphe::clear(){
 	lesNoeuds.clear();
+	noeudsLus.clear();
 	DATA.close();
 	DEBUT_PARTIE_FIXE = NBNOEUDS = 0;
 	NOM = "";
