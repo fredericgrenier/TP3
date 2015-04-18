@@ -12,6 +12,7 @@
 #include <map>
 #include <cmath>
 #include <string>
+#include <limits>
 #include <stdint.h>
 #include <unordered_map>
 using namespace std;
