@@ -70,20 +70,43 @@ int main()
 	//Two_Way_Test("C:\\Tests\\grUSA_32768.ibin", 3489, 6666);
 	//Two_Way_Test("C:\\Tests\\grUSA_1048576.ibin", 320694, 910366);
 
-	findDistance("C:\\Tests\\grUSA_32.ibin", 31, 40.0F, -70.0F); //  (d=234.21) 8 noeuds lus
-	findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40.0F, -70.0F); //  (d=191.314) 25 noeuds lus
-	findDistance("C:\\Tests\\grUSA_32768.ibin", 18499, 40.0F, -70.0F); //  (d=138.913) 29 noeuds lus
-	findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
+	//findDistance("C:\\Tests\\grUSA_32.ibin", 31, 40.0F, -70.0F); //  (d=234.21) 8 noeuds lus
+	//findDistance("C:\\Tests\\grUSA_1024.ibin", 841, 40.0F, -70.0F); //  (d=191.314) 25 noeuds lus
+	//findDistance("C:\\Tests\\grUSA_32768.ibin", 18499, 40.0F, -70.0F); //  (d=138.913) 29 noeuds lus
+	//findDistance("C:\\Tests\\grUSA_1048576.ibin", 631097, 40.0F, -70.0F); //  (d=71.6312) 143 noeuds lus
 
 	// Test des petites fonctions
-	/*graphe G("C:\\Tests\\grUSA_1048576.ibin");
-	cout << "Size_map depart : " << G.size_map() << endl;
-	G.localiser(40.0F, -70.0F);
-	cout << "Size_map apres localiser : " << G.size_map() << endl;
-	cout << "Nom du noeud 0 : " << G[0] << endl;
-	cout << "Nom du noeud 631097 : " << G[631097] << endl;
+	graphe G("C:\\Tests\\grUSA_32.ibin");
+	//cout << "Size_map depart : " << G.size_map() << endl;
+	uint32_t noeud;
+	noeud = G.localiser(40.0F, -70.0F);
+	cout << "point : " << noeud << endl
+		<< "distance : " << G.distance(noeud, 40.0F, -70.0F) << endl
+		<< "noeuds lus : " << G.size_map() << endl
+		<< endl;
 	G.vider();
-	cout << "Size_map apres vider : " << G.size_map() << endl;*/
+	noeud = G.localiser(41.792F, -92.8338F);
+	cout << "point : " << noeud << endl
+		<< "distance : " << G.distance(noeud, 41.792F, -92.8338F) << endl
+		<< "noeuds lus : " << G.size_map() << endl
+		<< endl;
+	G.vider();
+	noeud = G.localiser(37.6264F, -77.6058F);
+	cout << "point : " << noeud << endl
+		<< "distance : " << G.distance(noeud, 37.6264F, -77.6058F) << endl
+		<< "noeuds lus : " << G.size_map() << endl
+		<< endl;
+	G.vider();
+	noeud = G.localiser(37.6264F, -70.8559F);
+	cout << "point : " << noeud << endl
+		<< "distance : " << G.distance(noeud, 37.6264F, -70.8559F) << endl
+		<< "noeuds lus : " << G.size_map() << endl
+		<< endl;
+	//cout << "Size_map apres localiser : " << G.size_map() << endl;
+	//cout << "Nom du noeud 0 : " << G[0] << endl;
+	//cout << "Nom du noeud 631097 : " << G[631097] << endl;
+	//G.vider();
+	//cout << "Size_map apres vider : " << G.size_map() << endl;
 	
 	return 0;
 }

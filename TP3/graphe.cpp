@@ -223,6 +223,8 @@ uint32_t graphe::localiser(float LAT, float LON)
 
 void graphe::vider(){
 	lesNoeuds.clear();
+	noeudsLus.clear();
+	noeudsLus.resize(NBNOEUDS);
 }
 
 size_t graphe::size_map()const{
